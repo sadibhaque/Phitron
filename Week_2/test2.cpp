@@ -45,6 +45,10 @@ typedef vector<ps> vps;
 
 void solve(){
     printf("Hello\n");
+    printf("Hello\n");
+    printf("Hello\n");
+    printf("Hello\n");
+    
 }
 
 int sadib(){
