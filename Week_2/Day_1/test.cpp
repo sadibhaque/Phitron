@@ -44,11 +44,12 @@ typedef vector<ps> vps;
 #define all(x) (x).begin(),(x).end()
 
 void solve(){
-    printf("Hello\n");
-    printf("Hello\n");
-    printf("Hello\n");
-    printf("Hello\n");
-    
+    pend;
+
+    int n;
+    cin>>n;
+
+    cout<<n<<endl;
 }
 
 int sadib(){
