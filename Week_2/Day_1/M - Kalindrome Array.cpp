@@ -45,12 +45,12 @@ void solve(){
 	vi arr(n);
 	for(int i = 0; i < n; i++) cin>>arr[i];
 	
-	if(n <= 2 || arr[0] == arr[n-1]){
+	if(n <= 2){
 		py;
 		return;
 	}
 	
-	bool f = false;
+	bool f = true;
 	
 	for(int i = 0; i < n-i-1; i++){
 		if(arr[i] != (arr[n-i-1])){		
