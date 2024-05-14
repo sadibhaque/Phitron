@@ -6,15 +6,29 @@ template <typename T, typename U> long long min (T x, U y) {return (x < y) ? x :
 template <typename T, typename U> long long gccd(T a, U b) {while (b != 0) { T t = b; b = a % b; a = t;} return a;}
 template <typename T, typename U> long long lccm(T x, U y) {return ((long long)x / gccd((long long)x, (long long)y)) * y;}
 
-bool primeCheck (long long  n) {
-	if (n == 1) return 0;
-
-	for (int i = 2; i * i <= n; i++) {
-		if (n % i == 0) {
-			return 0;
+template <typename T, typename U> void sieve(vector<T>& prime, U n) {
+	prime.resize(n + 1, true);
+	for (U i = 2; i * i <= n; i++) {
+		if (prime[i]) {
+			for (U j = i * i; j <= n; j += i) {
+				prime[j] = false;
+			}
 		}
 	}
-	return 1;
+
+	prime[1] = 0;
+}
+
+template<typename T> void primeFactor(T n, map<T, int>& mp) {
+	for (T i = 2; i * i <= n; i++) {
+		if (n % i == 0) {
+			while (n % i == 0) {
+				mp[i]++;
+				n /= i;
+			}
+		}
+	}
+	if (n > 1) mp[n]++;
 }
 
 bool squareCheck (long long  n) {
@@ -31,8 +45,12 @@ void solve() {
 		cin >> arr[i];
 	}
 
+	vector <bool> prime;
+	long long  x = 10000000;
+	sieve(prime, x);
+
 	for (int i = 0; i < n; i++) {
-		if (primeCheck(sqrt(arr[i])) && squareCheck(arr[i])) cout << "YES\n";
+		if ( prime[sqrt(arr[i])] && squareCheck(arr[i])) cout << "YES\n";
 		else cout << "NO\n";
 	}
 }
